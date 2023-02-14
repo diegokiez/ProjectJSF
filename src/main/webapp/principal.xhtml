@@ -2,11 +2,15 @@
       xmlns:f="http://java.sun.com/jsf/core"      
       xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-
+	<title>Pantalla principal</title>
+	<h:outputStylesheet library = "css" name = "styles.css"></h:outputStylesheet>
 </h:head>
 <h:body>
 	Bienvenido a la pagina principal
-	<h:dataTable id = "tblEmpleados" var = "empleado" value = "#{principalController.empleados}">
+	<h:dataTable id = "tblEmpleados" var = "empleado" 
+	value = "#{principalController.empleados}"
+	headerClass = "headerTable"
+	rowClasses="rowTable rowTableLine">
 		<h:column>
 			<f:facet name = "header">Nombre</f:facet>
 			<h:outputText value = "#{empleado.nombre}"></h:outputText>
@@ -26,7 +30,7 @@
 		<h:column>
 			<f:facet name = "header">Estatus</f:facet>
 			<h:outputText value = "Habilitado" rendered = "#{empleado.estatus}"></h:outputText>
-			<h:outputText value = "Deshabilitado" rendered = "#{empleado.estatus}"></h:outputText>
+			<h:outputText value = "Deshabilitado" rendered = "#{!empleado.estatus}"></h:outputText>
 		</h:column>
 	</h:dataTable>
 </h:body>
