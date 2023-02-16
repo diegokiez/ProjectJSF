@@ -20,6 +20,7 @@ import com.diegokiez.project.services.EmpleadoServices;
 @ManagedBean
 @ViewScoped
 public class PrincipalController {
+	
 	private List<Empleado> empleados;
 	private EmpleadoServices empleadoService = new EmpleadoServices();
 	

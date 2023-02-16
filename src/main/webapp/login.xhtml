@@ -1,23 +1,46 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"      
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
       
       <h:head>
-      	<h:outputStylesheet library = "css" name = "styles.css"></h:outputStylesheet>
+      
+      	<!-- <h:outputStylesheet library = "css" name = "styles.css"></h:outputStylesheet>  -->
+      	<meta name="viewport" content="width=device-width, user-scalable=no" />
+      	
       </h:head>
       <h:body>
-      	<h:form id = "formLogin">
-      		<h:panelGrid column = "2">
-      			<h:outputLabel value = "Usuario" styleClass = "colorText"></h:outputLabel>
-      			<h:inputText value = "#{loginController.usuario}" required = "true" 
-      			requiredMessage = "El usuario es requerido" id = "us"></h:inputText>
-      			
-      			<h:outputLabel value = "Contraseña" styleClass = "colorText"></h:outputLabel>
-      			<h:inputSecret value = "#{loginController.contraseña}" required = "true"
-      			requiredMessage = "La contraseña es requerida" id = "con"></h:inputSecret>
-      			
-      			<h:commandButton value = "Entrar" action = "#{loginController.ingresar}"></h:commandButton>
-      		</h:panelGrid>
-      	</h:form>
+      
+      	<div class = "ui-fluid">
+	      	<h:form id = "formLogin">
+	      	
+	      	<p:growl id = "growl" />
+	      	
+		      	<p:panel id = "pnLLogin" header = "Inicio de Sesion" style = "text-align: center">
+		      	
+		      	<p:graphicImage name = "imgs/usuario.png" width = "15%"/>
+		      	
+		      		<p:panelGrid id = "pnlGridLogin" columns = "2" 
+		      			columnClasses = "ui-g-12 ui-md-12,ui-g-12 ui-md-12"
+		      			layout = "grid" styleClass = "ui-panelgrid-blank ui-fluid">
+		      			
+		      			<p:outputLabel value = "Usuario" styleClass = "colorText" 
+		      			for = "txtUsuario" style = "float: left"></p:outputLabel>
+		      			<p:inputText value = "#{loginController.usuario}" required = "true" 
+		      			requiredMessage = "El usuario es requerido" id = "txtUsuario"></p:inputText>
+		      			
+		      			<p:outputLabel value = "Contraseña" styleClass = "colorText" 
+		      			for = "txtPassword" style = "float: left"></p:outputLabel>
+		      			<p:password value = "#{loginController.contraseña}" required = "true"
+		      			requiredMessage = "La contraseña es requerida" id = "txtPassword"></p:password>
+		      			
+		      			<p:outputLabel></p:outputLabel>
+		      			<p:commandButton value = "Entrar" action = "#{loginController.ingresar}"
+		      			update = "pnLLogin, growl"></p:commandButton>
+		      		</p:panelGrid>
+		      	</p:panel>
+	      	</h:form>
+      	</div>
+      	
       </h:body>
 </html>
